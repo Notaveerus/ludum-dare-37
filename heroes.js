@@ -19,12 +19,19 @@ Crafty.c("AI", {
       Engine.collide(this,hitData)
     })
     this.bind('MouseDown',function(e){
-      if(this.team!=='hero'){
+      if(e.mouseButton === Crafty.mouseButtons.LEFT){
         if(heroes.length>0){
           if(abilities[placeIndex].value<gold){
             var cost =abilities[placeIndex].value;
             Engine.abilities[abilities[placeIndex].name](this,cost);
           }
+
+        }
+      }
+      if(e.mouseButton === Crafty.mouseButtons.RIGHT){
+        if(this.team == 'monster'){
+          Engine.death(this)
+          gold+=this.value*1.5
         }
       }
     })
@@ -86,7 +93,7 @@ Crafty.c("AI", {
       this.init = false;
       this.damage = 20*this.diffMod
       this.speed =1;
-      this.value=15*this.diffMod
+      this.value=10*this.diffMod
     }
     if(this.dist){
 
@@ -131,7 +138,7 @@ Crafty.c("AI", {
     if(this.targetPos && this.team == 'hero'){
       this.dist = Crafty.math.distance(this.currPos.x, this.currPos.y,this.targetPos.x,this.targetPos.y)
       if(this.dist>this.range){
-        Engine.moveTo(this,this.speed)
+        Engine.moveTo(this,this.speed/2)
       }
     }
     if(this.team == 'monster'&&heroes.length==0&&this.currPos!==this.spawn){
@@ -280,7 +287,7 @@ Crafty.c("AI", {
       this.init = false;
       this.damage = 20*this.diffMod
       this.speed =1;
-      this.value=15*this.diffMod
+      this.value=10*this.diffMod
       this.healDelay = 50;
       this.image('cleric.png')
 
@@ -324,7 +331,7 @@ Crafty.c("AI", {
       this.damage = 5*this.diffMod
       this.init = false
       this.speed =0.7;
-      this.value=10*this.diffMod;
+      this.value=1*this.diffMod;
       this.onHit("Arrow",function(hitData){
         Engine.collideShield(hitData,this,1);
       })

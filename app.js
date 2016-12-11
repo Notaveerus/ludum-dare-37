@@ -37,6 +37,10 @@ var abilities = [
   {
     value: 10,
     name: 'heal'
+  },
+  {
+    value:20,
+    name: 'smite'
   }
 ]
 var placeIndex = 0;
@@ -53,7 +57,8 @@ $(document).ready(function(){
 
   var initParty = function(){
     var offset = -120
-    var diffMod = 1+(wave/10);
+    var diffMod = Math.log10(wave);
+    console.log(diffMod)
     for(var i=0;i<4;i++){
       enemyCount++
       var hero = Crafty.e('AI')
@@ -82,7 +87,7 @@ $(document).ready(function(){
 
   Crafty.scene("main",function(){
     clock = Crafty.e("Countdown");
-    Crafty.background('url(floor.png) repeat');
+    Crafty.background('#2e2e2e');
     Crafty.bind('KeyDown',function(e){
       if(e.key == Crafty.keys.R){
         monsters.length = 0;
@@ -122,16 +127,16 @@ $(document).ready(function(){
 
 
       }
-      if(e.mouseButton == Crafty.mouseButtons.RIGHT){
-
-        var enemy =Crafty.e("AI")
-        enemy.x = Crafty.mousePos.x;
-        enemy.y = Crafty.mousePos.y
-        enemy.type = store[placeIndex].name;
-        enemy.team = 'hero'
-          placeIndex = 0;
-        heroes.push(enemy)
-      }
+      // if(e.mouseButton == Crafty.mouseButtons.RIGHT){
+      //
+      //   var enemy =Crafty.e("AI")
+      //   enemy.x = Crafty.mousePos.x;
+      //   enemy.y = Crafty.mousePos.y
+      //   enemy.type = store[placeIndex].name;
+      //   enemy.team = 'hero'
+      //     placeIndex = 0;
+      //   heroes.push(enemy)
+      // }
 
     })
     .bind('MouseWheelScroll',function(evt){
@@ -148,7 +153,7 @@ $(document).ready(function(){
     .bind("EnterFrame",function(){
       gold = parseInt(gold)
       goldCount.gold = gold;
-      console.log(heroes.length,waiting)
+
       if(!heroes.length && waiting){
         waiting = false;
         clock.value=countTime;

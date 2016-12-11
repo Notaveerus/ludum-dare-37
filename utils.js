@@ -94,6 +94,7 @@ var Engine = {
     },
     abilities:{
       "shield": function(obj,cost){
+        if(obj.team!=='hero'){
         if(!obj.shielded){
           gold-=cost;
           console.log('shielded')
@@ -107,14 +108,28 @@ var Engine = {
 
           },1000)
         }
+      }
       },
       'heal': function(obj,cost){
+        if(obj.team!=='hero'){
         obj.health+=60;
         gold-=cost;
         if(obj.health>obj.maxHealth){
           obj.health = obj.maxHealth
         }
         obj.healthBar.subtract(-60,obj.maxHealth);
+      }
+      },
+      'smite': function(obj,cost){
+        if(obj.team == 'hero'){
+        obj.health-=50;
+        gold-=cost;
+        obj.healthBar.subtract(50,obj.maxHealth)
+        if(obj.health<=0){
+          Engine.death(obj);
+        }
+      }
+
       }
     }
 

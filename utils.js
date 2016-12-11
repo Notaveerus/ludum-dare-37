@@ -78,10 +78,10 @@ var Engine = {
         var diff = Math.abs(eRot-rot)
         if(Crafty.math.withinRange(diff,130,230)){
           var damage = hitData[0].obj.damage*0.25*mod;
-          console.log(mod)
+
         }
         else{
-          console.log(diff)
+        
           var damage = hitData[0].obj.damage;
         }
         if(!obj.shielded){

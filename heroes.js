@@ -156,7 +156,6 @@ Crafty.c("AI", {
       this.maxHealth = 100*this.diffMod
       this.health = this.maxHealth;
       this.image('fighter.png')
-      console.log(this.image)
       this.range = 50;
       this.damage = 20*this.diffMod
       this.init = false

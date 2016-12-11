@@ -57,7 +57,7 @@ $(document).ready(function(){
 
   var initParty = function(){
     var offset = -120
-    var diffMod = Math.log10(wave);
+    var diffMod = Math.pow(wave,0.9)
     console.log(diffMod)
     for(var i=0;i<4;i++){
       enemyCount++

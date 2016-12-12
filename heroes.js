@@ -101,7 +101,7 @@ Crafty.c("AI", {
         this.cancelTween;
         var arrowX = this.x+this.w/2;
         var arrowY = this.y+this.h/2;
-        var arrow = Crafty.e("2D,Color,Collision,Arrow,DOM")
+        var arrow = Crafty.e("2D,Color,Collision,Arrow,DOM,Image")
         .attr({
             x:arrowX,
             y:arrowY,
@@ -115,6 +115,7 @@ Crafty.c("AI", {
         .color("#533108")
         arrow.team = this.team;
         arrow.damage = this.damage
+        arrow.image('arrow.png')
         var spread= Crafty.math.randomNumber(-0.5,0.5)
         arrow.bind("EnterFrame",function(){
           this.x-= this.xspeed+spread

@@ -46,7 +46,7 @@ var abilities = [
 var placeIndex = 0;
 var countTime = 25
 var assetsObj = {
-  "images":['cleric.png','fighter.png','ranger.png','barbarian.png']
+  "images":['cleric2.png','fighter2.png','ranger2.png','barbarian2.png,peasant2.png,arrow.png']
 
   }
 

@@ -89,7 +89,7 @@ Crafty.c("AI", {
       this.range = 400
       this.maxHealth = Math.round(100*this.diffMod);
       this.health = this.maxHealth;
-      this.image('ranger.png')
+      this.image('ranger2.png')
       this.init = false;
       this.damage = 20*this.diffMod
       this.speed =1;
@@ -156,7 +156,7 @@ Crafty.c("AI", {
       this.i=2;
       this.maxHealth = 100*this.diffMod
       this.health = this.maxHealth;
-      this.image('fighter.png')
+      this.image('fighter2.png')
       this.range = 50;
       this.damage = 20*this.diffMod
       this.init = false
@@ -220,7 +220,7 @@ Crafty.c("AI", {
       this.i=2;
       this.maxHealth = 250*this.diffMod;
       this.health = this.maxHealth;
-      this.image('barbarian.png')
+      this.image('barbarian2.png')
       this.range = 50;
       this.damage = 40*this.diffMod
       this.init = false
@@ -232,9 +232,6 @@ Crafty.c("AI", {
       this.healthBar.subtract(0.1,this.maxHealth)
       if(this.health<=0)
         Engine.death(this)
-    }
-    else{
-      Engine.abilities['heal'](this,0)
     }
     if(this.dist){
       if(this.dist<this.range && this.targeting && this.fireDelay < 0){
@@ -289,7 +286,7 @@ Crafty.c("AI", {
       this.speed =1;
       this.value=10*this.diffMod
       this.healDelay = 50;
-      this.image('cleric.png')
+      this.image('cleric2.png')
 
     }
     if(this.team == 'hero'){
@@ -326,7 +323,7 @@ Crafty.c("AI", {
       this.i=2;
       this.maxHealth = 21*this.diffMod
       this.health = this.maxHealth;
-      this.image('peasant.png')
+      this.image('peasant2.png')
       this.range = 50;
       this.damage = 5*this.diffMod
       this.init = false
